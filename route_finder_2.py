@@ -1,4 +1,5 @@
 import networkx as nx
+import igraph
 
 DG = nx.DiGraph()
 
@@ -7,10 +8,7 @@ def add(cmd, args):
     """
 
     :param args: 4 parameters
-    original city (string)
-    destination city (string)
-    mileage of leg (float)
-    duration (float)
+    [origin, destination, mileage, duration]
     """
 
     if len(args) != 4:
@@ -26,14 +24,13 @@ def add(cmd, args):
     DG.add_edge(args[0], args[1], mileage=float(args[2]), duration=float(args[3]))
 
     print("EDGE " + ' '.join(args) + '\n')
-    pass
 
 
 def query(cmd, args):
     """
 
     :param cmd:
-    :param args:
+    :param args: [origin, destination]
     :return:
     """
     if len(args) != 2:
